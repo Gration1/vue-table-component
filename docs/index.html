@@ -1,187 +1,230 @@
 <html>
-<head>
-    <title>vue-table-component</title>
-    <link href="table-component.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #efefef;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-            font-size: 16px;
-            padding: 1em;
-        }
-
-        .page {
-            background-color: #fff;
-            border-radius: 3px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, .025);
-            margin: 0 auto;
-            max-width: 66em;
-            padding: 4em 2em;
-        }
-
-        @media (min-width: 700px) {
+    <head>
+        <title>vue-table-component-pagination-slots-classes</title>
+        <link href="table-component.css" rel="stylesheet"/>
+        <style>
+            body {
+                background-color: #efefef;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+                font-size: 16px;
+                padding: 1em;
+            }
             .page {
-                padding: 4em;
-            }
-        }
-
-        .page-title {
-            font-size: 2.4rem;
-            margin-bottom: 1em;
-        }
-
-        .page-title a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .page-title a:hover {
-            color: #007593;
-        }
-
-        .page-subtitle {
-            font-size: 1.25rem;
-            margin-bottom: 1em;
-            padding-top: .25em;
-        }
-
-        .page-about {
-            background-color: #d1e8eb;
-            margin: 0 -2em;
-            padding: 2em 1em;
-        }
-
-        @media (min-width: 700px) {
-            .page-about {
+                background-color: #fff;
                 border-radius: 3px;
-                margin: 0;
-                padding: 2em;
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.025);
+                margin: 0 auto;
+                max-width: 66em;
+                padding: 4em 2em;
             }
-        }
-
-        .page-about h2 {
-            color: #003345;
-        }
-
-        .page-about p {
-            color: #003345;
-            line-height: 1.45;
-            margin-bottom: 1em;
-        }
-
-        .page-about a {
-            color: #007593;
-        }
-
-        .page-about code {
-            background-color: rgba(255, 255, 255, .75);
-            border-radius: 3px;
-            padding: 0 .25em;
-        }
-
-        .page-outro {
-            color: #999;
-            display: block;
-            margin-top: 4em;
-            text-align: center;
-        }
-
-        .page-outro a {
-            color: #999;
-        }
-
-        .prefix,
-        .suffix {
-            align-items: center;
-            border-radius: 1.25rem;
-            display: flex;
-            font-size: .75rem;
-            flex-shrink: 0;
-            height: 1.25rem;
-            justify-content: center;
-            line-height: 1.25rem;
-            min-width: 1.25rem;
-            padding: 0 .1em;
-        }
-
-        .prefix {
-            background-color: #d1e8eb;
-            color: #0c5174;
-            margin-right: .35em;
-        }
-
-        .suffix {
-            background-color: #c03;
-            color: #fff;
-            margin-left: .35em;
-
-        }
-
-        @media (min-width: 700px) {
+            @media (min-width: 700px) {
+                .page {
+                    padding: 4em;
+                }
+            }
+            .page-title {
+                font-size: 2.4rem;
+                margin-bottom: 1em;
+            }
+            .page-title a {
+                color: inherit;
+                text-decoration: none;
+            }
+            .page-title a:hover {
+                color: #007593;
+            }
+            .page-subtitle {
+                font-size: 1.25rem;
+                margin-bottom: 1em;
+                padding-top: 0.25em;
+            }
+            .page-about {
+                background-color: #d1e8eb;
+                margin: 0 -2em;
+                padding: 2em 1em;
+            }
+            @media (min-width: 700px) {
+                .page-about {
+                    border-radius: 3px;
+                    margin: 0;
+                    padding: 2em;
+                }
+            }
+            .page-about h2 {
+                color: #003345;
+            }
+            .page-about p {
+                color: #003345;
+                line-height: 1.45;
+                margin-bottom: 1em;
+            }
+            .page-about a {
+                color: #007593;
+            }
+            .page-about code {
+                background-color: rgba(255, 255, 255, 0.75);
+                border-radius: 3px;
+                padding: 0 0.25em;
+            }
+            .page-outro {
+                color: #999;
+                display: block;
+                margin-top: 4em;
+                text-align: center;
+            }
+            .page-outro a {
+                color: #999;
+            }
+            .prefix,
             .suffix {
-                position: absolute;
-                right: -.725em;
-                top: -.725em;
+                align-items: center;
+                border-radius: 1.25rem;
+                display: flex;
+                font-size: 0.75rem;
+                flex-shrink: 0;
+                height: 1.25rem;
+                justify-content: center;
+                line-height: 1.25rem;
+                min-width: 1.25rem;
+                padding: 0 0.1em;
             }
-        }
-    </style>
-</head>
-<body>
-    <article id="app" class="page">
-        <h1 class="page-title">
-            <a href="https://github.com/spatie/vue-table-component">Vue-table-component</a>
-        </h1>
-        <table-component
-            :data="[
-            { firstName: 'John', lastName: 'Lennon', instrument: 'Guitar', birthday: '04/10/1940', songs: 72 },
-            { firstName: 'Paul', lastName: 'McCartney', instrument: 'Bass', birthday: '18/06/1942', songs: 70 },
-            { firstName: 'George', lastName: 'Harrison', instrument: 'Guitar', birthday: '25/02/1943', songs: 22 },
-            { firstName: 'Ringo', lastName: 'Starr', instrument: 'Drums', birthday: '07/07/1940', songs: 2 },
-            ]"
-            sort-by="songs"
-            sort-order="asc"
-            >
-            <table-column show="firstName" label="First name"></table-column>
-            <table-column show="lastName" label="Last name"></table-column>
-            <table-column show="instrument" label="Instrument"></table-column>
-            <table-column show="songs" label="Songs" data-type="numeric"></table-column>
-            <table-column show="birthday" label="Birthday" data-type="date:DD/MM/YYYY"></table-column>
-            <table-column :sortable="false" :filterable="false">
-                <template slot-scope="artist">
-                    <a :href="'#' + artist.firstName.toLowerCase()">
-                        Edit
-                    </a>
+            .prefix {
+                background-color: #d1e8eb;
+                color: #0c5174;
+                margin-right: 0.35em;
+            }
+            .suffix {
+                background-color: #c03;
+                color: #fff;
+                margin-left: 0.35em;
+            }
+            @media (min-width: 700px) {
+                .suffix {
+                    position: absolute;
+                    right: -0.725em;
+                    top: -0.725em;
+                }
+            }
+            
+            li {
+                display: inline-block;
+                padding: 10px;
+                border-radius: 5px; /*optional*/
+                color: #aaa;
+                font-size: .875em;
+            }
+            
+            .pagination {
+                background: #f2f2f2;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .nav-button {
+                display: inline-block;
+                padding: 0px 9px;
+                margin-right: 4px;
+                border-radius: 3px;
+                border: solid 1px #c0c0c0;
+                background: #e9e9e9;
+                box-shadow: inset 0px 1px 0px rgba(255,255,255, .8), 0px 1px 3px rgba(0,0,0, .1);
+                font-size: .875em;
+                font-weight: bold;
+                text-decoration: none;
+                color: #717171;
+                text-shadow: 0px 1px 0px rgba(255,255,255, 1);
+            }
+            
+            .nav-button:hover {
+                background: #fefefe;
+                background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#f0f0f0));
+                background: -moz-linear-gradient(0% 0% 270deg,#FEFEFE, #f0f0f0);
+            }
+            
+            .nav-button.active {
+                border: none;
+                background: #616161;
+                box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .8);
+                color: #f0f0f0;
+                text-shadow: 0px 0px 3px rgba(0,0,0, .5);
+            }
+            
+            .nav-button.dark {
+                border: solid 1px #32373b;
+                background: #3e4347;
+                box-shadow: inset 0px 1px 1px rgba(255,255,255, .1), 0px 1px 3px rgba(0,0,0, .1);
+                color: #feffff;
+                text-shadow: 0px 1px 0px rgba(0,0,0, .5);
+            }
+
+        </style>
+    </head>
+    <body>
+        <article class="page" id="app">
+            <h1 class="page-title">
+                <a href="https://github.com/Gration1/vue-table-component">vue-table-component-pagination-slots-classes</a>
+            </h1>
+            <table-component :data="getData" sort-by="songs" sort-order="asc" pagination-li-page-class="nav-button" pagination-li-ellipsis-class="nav-button dark" pagination-li-first-class="nav-button" pagination-li-last-class="nav-button" pagination-li-prev-class="nav-button" pagination-li-next-class="nav-button">
+                <table-column label="First name" show="firstName"></table-column>
+                <table-column label="Last name" show="lastName"></table-column>
+                <table-column label="Instrument" show="instrument"></table-column>
+                <table-column data-type="numeric" label="Songs" show="songs"></table-column>
+                <table-column data-type="date:DD/MM/YYYY" label="Birthday" show="birthday"></table-column>
+                <table-column :filterable="false" :sortable="false">
+                    <template slot-scope="artist">
+                        <a :href="'#' + artist.firstName.toLowerCase()">
+                            Edit
+                        </a>
+                    </template>
+                </table-column>
+                <template slot-scope="{ rows }" slot="tfoot">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>Total Songs:</th>
+                        <th>
+                            {{ rows.reduce((sum, value) => { return sum + value.data.songs; }, 0) }}</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
                 </template>
-            </table-column>
-            <template slot="tfoot" slot-scope="{ rows }">
-                <tr>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
-                    <th>Total Songs:</th>
-                    <th>{{ rows.reduce((sum, value) => { return sum + value.data.songs; }, 0) }}</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
-                </tr>
-            </template>
-        </table-component>
-
-    <section class="page-about">
-        <h2 class="page-subtitle">About</h2>
-        <p>
-            The table component above is powered by <a href="https://github.com/spatie/vue-table-component">spatie/vue-table-component</a>.
-            <br>
-            The component allows for straightforward and lightweight <strong>sorting</strong> and <strong>filtering</strong> of table data.</p>
-
-            <p>The component will also remember the state when you reload or return to the same page within 15 min.
-            </p>
-        </section>
-
-        <small class="page-outro">
-            <a href="https://github.com/spatie/vue-table-component">Code on GitHub</a> |
-            Proudly presented by <a href="https://spatie.be">spatie.be</a>
-        </small>
-    </article>
-
-    <script src="build/app.js"></script>
-</body>
+                <template v-slot:pprev="{pageClicked, pagination}">
+                    <h2><a @click="pageClicked( pagination.currentPage - 1 )">Previous</a></h2>
+                </template>
+                <template v-slot:pnext="{pageClicked, pagination}">
+                    <h2><a @click="pageClicked( pagination.currentPage + 1 )">Next</a></h2>
+                </template>
+                <template v-slot:ppage="{pageClicked, page}">
+                    <h2><a class="page-link" @click="pageClicked(page)">{{ page }}</a></h2>
+                </template>
+                <template v-slot:pellipsis>
+                    <h2><span class="ellipsis">...</span></h2>
+                </template>
+                <template v-slot:pfirst="{pageClicked}">
+                    <h2 style="color:red;"><a class="page-link" @click="pageClicked(1)">1</a></h2>
+                </template>
+                <template v-slot:plast="{pageClicked, pagination}">
+                    <h2 style="color:blue;"><a class="page-link" @click="pageClicked(pagination.totalPages)">{{pagination.totalPages}}</a></h2>
+                </template>
+                
+            </table-component>
+            <section class="page-about">
+                <h2 class="page-subtitle">About</h2>
+                <p>
+                    This is a fork of
+                    <a href="https://github.com/spatie/vue-table-component">spatie/vue-table-component</a>.
+                    <br/>
+                    It works the same as the original component, but adds
+                    <strong>slots</strong>
+                    and
+                    <strong>classes</strong>
+                    to the pagination to allow more customisation.
+                </p>
+            </section>
+            <small class="page-outro">
+                <a href="https://github.com/Gration1/vue-table-component">Code on GitHub</a>
+            </small>
+        </article>
+        <script src="build/app.js"></script>
+    </body>
 </html>

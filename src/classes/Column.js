@@ -1,4 +1,4 @@
-import { pick } from '../helpers';
+import { pick } from '../helpers';
 
 export default class Column {
     constructor(columnComponent) {

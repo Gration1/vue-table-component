@@ -510,7 +510,7 @@ exports[`TableComponent can render pagination when the server responds with pagi
             4
           </a>
         </li>
-        <li>
+        <li class>
           <a class>
             <i class="right chevron icon">
               »
@@ -714,7 +714,7 @@ exports[`TableComponent clicking a link in the pagination will rerender the tabl
             4
           </a>
         </li>
-        <li>
+        <li class>
           <a class>
             <i class="right chevron icon">
               »
@@ -808,7 +808,7 @@ exports[`TableComponent clicking a link in the pagination will rerender the tabl
             4
           </a>
         </li>
-        <li>
+        <li class>
           <a class>
             <i class="right chevron icon">
               »

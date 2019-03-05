@@ -19,7 +19,7 @@
                         <span class="pagination-ellipsis">&hellip;</span>
                     </slot>
                 </li>
-                <li :class="[ isActive(page) ? 'active' : '', page === '...' ? 'disabled' : '', ...fullPaginationLiPageClass ]" v-for="page in pages" :key="page">
+                <li :class="[...fullPaginationLiPageClass, isActive(page) ? 'active' : '', page === '...' ? 'disabled' : '' ]" v-for="page in pages" :key="page">
                     <slot name="ppage" :pageClicked="pageClicked" :page="page">
                         <a class="page-link" @click="pageClicked(page)">{{ page }}</a>
                     </slot>
@@ -29,7 +29,7 @@
                         <span class="pagination-ellipsis">&hellip;</span>
                     </slot>
                 </li>
-                <li v-if="hasLast" class="page-item" :class="fullPaginationLiLastClass">
+                <li v-if="hasLast" :class="fullPaginationLiLastClass">
                     <slot name="plast" :pageClicked="pageClicked" :pagination="pagination">
                         <a class="page-link" @click="pageClicked(pagination.totalPages)">{{pagination.totalPages}}</a>
                     </slot>
@@ -104,19 +104,19 @@ export default {
             return classList(this.paginationUlClass);
         },
         fullPaginationLiFirstClass() {
-            return [this.isActive(1) ? 'active' : '', ...classList(this.paginationLiFirstClass)];
+            return [...classList(this.paginationLiFirstClass), this.isActive(1) ? 'active' : ''];
         },
         fullPaginationLiLastClass() {
-            return [this.isActive(this.pagination.totalPages) ? 'active' : '', ...classList(this.paginationLiLastClass)];
+            return [...classList(this.paginationLiLastClass), this.isActive(this.pagination.totalPages) ? 'active' : ''];
         },
         fullPaginationLiEllipsisClass() {
             return classList(this.paginationLiEllipsisClass);
         },
         fullPaginationLiPrevClass() {
-            return [this.pagination.currentPage === 1 ? 'disabled' : '', ...classList(this.paginationLiPrevClass)];
+            return [...classList(this.paginationLiPrevClass), this.pagination.currentPage === 1 ? 'disabled' : ''];
         },
         fullPaginationLiNextClass() {
-            return [this.pagination.currentPage === this.pagination.totalPages ? 'disabled' : '', ...classList(this.paginationLiNextClass)];
+            return [...classList(this.paginationLiNextClass), this.pagination.currentPage === this.pagination.totalPages ? 'disabled' : ''];
         },
         fullPaginationLiPageClass() {
             return classList(this.paginationLiPageClass);

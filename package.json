@@ -1,7 +1,7 @@
 {
-  "name": "vue-table-component",
-  "version": "1.9.2",
-  "description": "A straightforward Vue component to filter and sort tables",
+  "name": "vue-table-component-pagination-slots-classes",
+  "version": "1.0.0",
+  "description": "A fork of spatie/vue-table-component that adds customisation to the pagination",
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
@@ -14,17 +14,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/spatie/vue-table-component.git"
+    "url": "https://github.com/Gration1/vue-table-component.git"
   },
   "keywords": [
     "spatie"
   ],
-  "author": "Freek Van der Herten",
+  "author": "Carl Hens",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/spatie/vue-table-component/issues"
+    "url": "https://github.com/Gration1/vue-table-component/issues"
   },
-  "homepage": "https://github.com/spatie/vue-table-component",
+  "homepage": "https://github.com/Gration1/vue-table-component",
   "peerDependencies": {
     "moment": "^2.18.1"
   },
